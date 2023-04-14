@@ -1,0 +1,3 @@
+﻿  binary_search.c
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\binary_search\binary_search.c(9): warning C4716: 'BinarySearch': must return a value
+  binary_search.vcxproj -> C:\PROGRAMMING\Projects\data_structures_and_algorithms\x64\Debug\binary_search.exe
