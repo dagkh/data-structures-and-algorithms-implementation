@@ -10,15 +10,21 @@ typedef struct node
 
 typedef struct queue
 {
-	struct node* tail;
-	struct node* head;
+	Node* tail;
+	Node* head;
 	int count;
 } Queue;
 
-void Initialize(Queue* queue)
+Queue* Initial()
 {
-	queue->head = queue->tail = NULL;
-	queue->count = 0;
+	Queue* queue = (Queue*)malloc(sizeof(Queue));
+	if (queue != NULL)
+	{
+		queue->head = queue->tail = NULL;
+		queue->count = 0;
+		return queue;
+	}
+	else return NULL;
 }
 
 Node* CreateNode(int data)
@@ -28,8 +34,9 @@ Node* CreateNode(int data)
 	{
 		node->value = data;
 		node->ptr_previous = NULL;
+		return node;
 	}
-	return node;
+	return NULL;
 }
 
 // Adds an node to the end of the Queue.
@@ -63,10 +70,13 @@ int Dequeue(Queue* queue)
 // Returns the node at the beginning of the Queue without removing it.
 Node* Peek(Queue* queue)
 {
-	Node* node = NULL;
 	if (queue->head != NULL)
+	{
+		Node* node = NULL;
 		node = queue->head;
-	return node;
+		return node;
+	}
+	return NULL;
 }
 
 // Removes all node from the Queue.
@@ -99,14 +109,11 @@ void PrintQueue(Queue* queue)
 
 int main()
 {
-	Queue* queue = (Queue*)malloc(sizeof(Queue));
-	Initialize(queue);
-	if (queue == NULL)
-		return 0;
+	Queue* queue = Initial();
 	Input(queue, 5);
-	Clear(queue);
 	PrintQueue(queue);
+	Clear(queue);
 
-	_getch();
+	char getch = _getch();
 	return 0;
 }

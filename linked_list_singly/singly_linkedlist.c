@@ -15,10 +15,16 @@ typedef struct linkedList
 	int count;
 } LinkedList;
 
-void Initialize(LinkedList* linkedList)
+LinkedList* Initial()
 {
-	linkedList->head = linkedList->tail = NULL;
-	linkedList->count = 0;
+	LinkedList* linkedList = (LinkedList*)malloc(sizeof(LinkedList));
+	if (linkedList != NULL)
+	{
+		linkedList->head = linkedList->tail = NULL;
+		linkedList->count = 0;
+		return linkedList;
+	}
+	else return NULL;
 }
 
 Node* CreateNode(int data)
@@ -123,18 +129,15 @@ void PrintLinkedList(LinkedList* linkedList)
 
 int main()
 {
-	LinkedList* linkedList = (LinkedList*)malloc(sizeof(LinkedList));
-	if (linkedList == NULL)
-		return 0;
+	LinkedList* linkedList = Initial();
 
 	int n;
 	printf_s("\n Enter number of elements: ");
 	scanf_s("%d", &n);
-	Initialize(linkedList);
 	Input(linkedList, n);
 	PrintLinkedList(linkedList);
 	Clear(linkedList);
 
-	_getch();
+	char getch = _getch();
 	return 0;
 }

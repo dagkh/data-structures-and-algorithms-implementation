@@ -5,6 +5,6 @@
 int main()
 {
 
-    _getch();
-    return 0;
+	char getch = _getch();
+	return 0;
 }

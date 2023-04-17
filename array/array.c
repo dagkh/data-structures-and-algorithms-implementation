@@ -29,6 +29,6 @@ int main()
 
 	free(array);
 
-	_getch();
+	char getch = _getch();
 	return 0;
 }

@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <time.h>
+
+void BubbleSort(int* array, int length)
+{
+
+}
 
 int main()
 {
-
-    _getch();
-    return 0;
+	char getch = _getch();
+	return 0;
 }

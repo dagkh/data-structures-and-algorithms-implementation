@@ -23,6 +23,6 @@ int main()
 		? printf_s("\n Element is not present in array")
 		: printf_s("\n Element is present at index %d", index);
 
-	_getch();
+	char getch = _getch();
 	return 0;
 }

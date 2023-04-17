@@ -14,11 +14,18 @@ typedef struct stack
 	int count;
 } Stack;
 
-void Initialize(Stack* stack)
+Stack* Initial()
 {
-	stack->top = NULL;
-	stack->count = 0;
+	Stack* stack = (Stack*)malloc(sizeof(Stack));
+	if (stack != NULL)
+	{
+		stack->top = NULL;
+		stack->count = 0;
+		return stack;
+	}
+	else return NULL;
 }
+
 
 Node* CreateNode(int data)
 {
@@ -100,13 +107,10 @@ void PrintStack(Stack* stack)
 
 int main()
 {
-	Stack* stack = (Stack*)malloc(sizeof(Stack));
-	Initialize(stack);
-	if (stack == NULL)
-		return 0;
+	Stack* stack = Initial();
 	Input(stack, 5);
 	PrintStack(stack);
 
-	_getch();
+	char getch = _getch();
 	return 0;
 }
