@@ -42,7 +42,6 @@ void InsertRight(TNode* root, TNode* node_right)
 typedef struct queue_node
 {
 	TNode* tree_node;
-	struct queue_node* ptr_next;
 	struct queue_node* ptr_previous;
 } QNode;
 
@@ -66,7 +65,7 @@ QNode* Create_QNode(TNode* tree_node)
 	if (queue_node != NULL)
 	{
 		queue_node->tree_node = tree_node;
-		queue_node->ptr_previous = queue_node->ptr_next = NULL;
+		queue_node->ptr_previous = NULL;
 		return queue_node;
 	}
 	return NULL;
@@ -80,7 +79,6 @@ void Enqueue(Queue* queue, TNode* tree_node)
 		queue->head = queue->tail = queue_node;
 	else
 	{
-		queue_node->ptr_next = queue->tail;
 		queue->tail->ptr_previous = queue_node;
 		queue->tail = queue_node;
 	}
@@ -93,8 +91,6 @@ void Dequeue(Queue* queue)
 	{
 		QNode* access_to_free = queue->head;
 		queue->head = queue->head->ptr_previous;
-		if (queue->head != NULL)
-			queue->head->ptr_next = NULL;
 		free(access_to_free);
 	}
 	else
@@ -126,19 +122,6 @@ int Is_Queue_Empty(Queue* queue)
 	return 0;
 }
 
-void PrintQueue(Queue* queue)
-{
-	printf_s("  QUEUE:");
-	QNode* access = queue->tail;
-	printf_s("\n  --------------------------------\n");
-	while (access != NULL)
-	{
-		printf_s("  %d ", access->tree_node->data);
-		access = access->ptr_next;
-	}
-	printf_s("\n  --------------------------------\n\n");
-}
-
 /*
 ************************************************************
 *					TREE PROCESSING
@@ -161,7 +144,7 @@ TNode* Initial_Tree()
 
 	Queue* queue = Initial_Queue();
 	Enqueue(queue, root);
-	PrintQueue(queue);
+
 
 	while (!Is_Queue_Empty(queue))
 	{
@@ -208,14 +191,61 @@ TNode* Initial_Tree()
 			node_head->ptr_right = node_want_to_add;
 			Enqueue(queue, node_want_to_add);
 		}
-		PrintQueue(queue);
 	}
 	return root;
+}
+
+void Preorder(TNode* root)
+{
+	if (root != NULL)
+	{
+		printf_s(" %d ", root->data);
+		Preorder(root->ptr_left);
+		Preorder(root->ptr_right);
+	}
+}
+
+void Inorder(TNode* root)
+{
+	if (root != NULL)
+	{
+		Inorder(root->ptr_left);
+		printf_s(" %d ", root->data);
+		Inorder(root->ptr_right);
+	}
+}
+
+void Postorder(TNode* root)
+{
+	if (root != NULL)
+	{
+		Postorder(root->ptr_left);
+		Postorder(root->ptr_right);
+		printf_s(" %d ", root->data);
+	}
+}
+
+void Free_Tree(TNode* root)
+{
+	if (root != NULL)
+	{
+		Free_Tree(root->ptr_left);
+		Free_Tree(root->ptr_right);
+		free(root);
+		root = NULL;
+	}
 }
 
 int main()
 {
 	TNode* root = Initial_Tree();
+	Preorder(root);
+	printf_s("\n");
+	Inorder(root);
+	printf_s("\n");
+	Postorder(root);
+	printf_s("\n");
+	Free_Tree(root);
 
 	char getch = _getch();
 	return 0;
