@@ -1,2 +1,3 @@
 ﻿  bubble_sort.c
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\bubble_sort\bubble_sort.c(13,12): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
   bubble_sort.vcxproj -> C:\PROGRAMMING\Projects\data_structures_and_algorithms\x64\Debug\bubble_sort.exe

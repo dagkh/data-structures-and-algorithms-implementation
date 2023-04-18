@@ -4,7 +4,7 @@
 
 /*
 ************************************************************
-*					TREE IMPLEMENTATION
+******************* TREE IMPLEMENTATION ********************
 ************************************************************
 */
 
@@ -36,7 +36,7 @@ void InsertRight(TNode* root, TNode* node_right)
 
 /*
 ************************************************************
-*					QUEUE IMPLEMENTATION
+******************* QUEUE IMPLEMENTATION *******************
 ************************************************************
 */
 typedef struct queue_node
@@ -124,7 +124,7 @@ int Is_Queue_Empty(Queue* queue)
 
 /*
 ************************************************************
-*					TREE PROCESSING
+******************* TREE INPUT & OUTPUT ********************
 ************************************************************
 */
 
@@ -144,7 +144,6 @@ TNode* Initial_Tree()
 
 	Queue* queue = Initial_Queue();
 	Enqueue(queue, root);
-
 
 	while (!Is_Queue_Empty(queue))
 	{
@@ -195,6 +194,27 @@ TNode* Initial_Tree()
 	return root;
 }
 
+// BFS using Queue
+void Breadth_First_Traversal(TNode* root)
+{
+	Queue* queue = Initial_Queue();
+	if (root != NULL)
+		Enqueue(queue, root);
+
+	while (!Is_Queue_Empty(queue))
+	{
+		TNode* node_first_of_queue = Peek(queue);
+		printf_s(" %d ", node_first_of_queue->data);
+		Dequeue(queue);
+
+		if (node_first_of_queue->ptr_left != NULL)
+			Enqueue(queue, node_first_of_queue->ptr_left);
+		if (node_first_of_queue->ptr_right != NULL)
+			Enqueue(queue, node_first_of_queue->ptr_right);
+	}
+}
+
+// DFS using Recursion
 void Preorder(TNode* root)
 {
 	if (root != NULL)
@@ -238,13 +258,52 @@ void Free_Tree(TNode* root)
 
 int main()
 {
-	TNode* root = Initial_Tree();
+	//TNode* root = Initial_Tree();
+	TNode* root = Create_TNode(1);
+	TNode* two = Create_TNode(2);
+	TNode* three = Create_TNode(3);
+	TNode* four = Create_TNode(4);
+	TNode* five = Create_TNode(5);
+	TNode* six = Create_TNode(6);
+	TNode* seven = Create_TNode(7);
+	TNode* eight = Create_TNode(8);
+	TNode* nine = Create_TNode(9);
+	TNode* ten = Create_TNode(10);
+	TNode* eleven = Create_TNode(11);
+	TNode* twelve = Create_TNode(12);
+	TNode* thirteen = Create_TNode(13);
+	TNode* fourteen = Create_TNode(14);
+
+	root->ptr_left = two;
+	root->ptr_right = three;
+
+	two->ptr_left = four;
+	two->ptr_right = five;
+
+	three->ptr_left = six;
+	three->ptr_right = seven;
+
+	four->ptr_left = eight;
+	four->ptr_right = nine;
+
+	five->ptr_left = ten;
+	five->ptr_right = eleven;
+
+	six->ptr_right = thirteen;
+
+	seven->ptr_left = fourteen;
+
+	printf_s("\n Breadth First Traversal: ");
+	Breadth_First_Traversal(root);
+
+	printf_s("\n\n Depth First Traversals: ");
+	printf_s("\n	Preorder Traversal : ");
 	Preorder(root);
-	printf_s("\n");
+	printf_s("\n	Inorder Traversal  : ");
 	Inorder(root);
-	printf_s("\n");
+	printf_s("\n	Postorder Traversal: ");
 	Postorder(root);
-	printf_s("\n");
+
 	Free_Tree(root);
 
 	char getch = _getch();
