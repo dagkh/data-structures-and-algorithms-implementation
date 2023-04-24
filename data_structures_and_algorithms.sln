@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "algorithms", "algorithms", "{2785B62B-8E82-4927-801A-A290856283D3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Algorithms", "Algorithms", "{2785B62B-8E82-4927-801A-A290856283D3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data_structures", "data_structures", "{088CEB9B-233A-4A18-8DF6-BFC1849CA313}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Structures", "Data Structures", "{088CEB9B-233A-4A18-8DF6-BFC1849CA313}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linear_data_structures", "linear_data_structures", "{8FFE609F-CE3F-445C-A8F4-D9B8758F45C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linear Data Structures", "Linear Data Structures", "{8FFE609F-CE3F-445C-A8F4-D9B8758F45C1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "stack\stack.vcxproj", "{AAA58CB6-FCCC-46C3-91D3-5C0A06A4A7A3}"
 EndProject
@@ -17,15 +17,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linked_list_singly", "linke
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linked_list_doubly", "linked_list_doubly\linked_list_doubly.vcxproj", "{DE5335E4-ED42-4206-96BC-B3E6CB625D84}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nonlinear_data_structures", "nonlinear_data_structures", "{4091CD39-A7E8-4AED-9172-82DE7EF7D274}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Non-Linear Data Structures", "Non-Linear Data Structures", "{4091CD39-A7E8-4AED-9172-82DE7EF7D274}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tree", "tree", "{60547083-FF3D-4EB7-B8CD-AA295E6E0BD4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trees", "Trees", "{60547083-FF3D-4EB7-B8CD-AA295E6E0BD4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "array", "array\array.vcxproj", "{E4F5FA01-48E2-46A8-B4B8-F09A395F398F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sorting", "sorting", "{875058C8-3236-4331-B861-F5A2F8650095}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sorting", "Sorting", "{875058C8-3236-4331-B861-F5A2F8650095}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "searching", "searching", "{600517A0-1932-4AC3-A5CA-FD1E98EC9882}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Searching", "Searching", "{600517A0-1932-4AC3-A5CA-FD1E98EC9882}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linear_search", "linear_search\linear_search.vcxproj", "{CE49C73E-E784-4972-B4C6-D1B1D48EC1BC}"
 EndProject
@@ -48,6 +48,17 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "quick_sort\quick_sort.vcxproj", "{F3CB10CD-306B-4FBC-8C80-BE7AC3110949}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "two_dimensional_array", "two_dimensional_array\two_dimensional_array.vcxproj", "{72F0AA3F-9FC0-476C-A5CD-8A4A18DDF410}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fibonacci_search", "fibonacci_search\fibonacci_search.vcxproj", "{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "counting_sort", "counting_sort\counting_sort.vcxproj", "{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74C89BC3-5B28-4B37-BF7F-DD3EC9FD9F8C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		input.txt = input.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +196,22 @@ Global
 		{72F0AA3F-9FC0-476C-A5CD-8A4A18DDF410}.Release|x64.Build.0 = Release|x64
 		{72F0AA3F-9FC0-476C-A5CD-8A4A18DDF410}.Release|x86.ActiveCfg = Release|Win32
 		{72F0AA3F-9FC0-476C-A5CD-8A4A18DDF410}.Release|x86.Build.0 = Release|Win32
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Debug|x64.ActiveCfg = Debug|x64
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Debug|x64.Build.0 = Debug|x64
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Debug|x86.ActiveCfg = Debug|Win32
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Debug|x86.Build.0 = Debug|Win32
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Release|x64.ActiveCfg = Release|x64
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Release|x64.Build.0 = Release|x64
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Release|x86.ActiveCfg = Release|Win32
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E}.Release|x86.Build.0 = Release|Win32
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Debug|x64.ActiveCfg = Debug|x64
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Debug|x64.Build.0 = Debug|x64
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Debug|x86.ActiveCfg = Debug|Win32
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Debug|x86.Build.0 = Debug|Win32
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Release|x64.ActiveCfg = Release|x64
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Release|x64.Build.0 = Release|x64
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Release|x86.ActiveCfg = Release|Win32
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,6 +238,8 @@ Global
 		{D35DBC4F-29C0-4143-B9C6-CA842D87A00E} = {875058C8-3236-4331-B861-F5A2F8650095}
 		{F3CB10CD-306B-4FBC-8C80-BE7AC3110949} = {875058C8-3236-4331-B861-F5A2F8650095}
 		{72F0AA3F-9FC0-476C-A5CD-8A4A18DDF410} = {8FFE609F-CE3F-445C-A8F4-D9B8758F45C1}
+		{4F6C4A0C-11BA-4278-888E-E795A8B58F0E} = {600517A0-1932-4AC3-A5CA-FD1E98EC9882}
+		{67B00C7F-015C-4ABB-A8F7-6F44ECDE1778} = {875058C8-3236-4331-B861-F5A2F8650095}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DABFBC2D-F98A-4B72-BE51-4915DC501F8C}

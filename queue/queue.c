@@ -15,7 +15,7 @@ typedef struct queue
 	int count;
 } Queue;
 
-Queue* Initial()
+Queue* initial()
 {
 	Queue* queue = (Queue*)malloc(sizeof(Queue));
 	if (queue != NULL)
@@ -27,7 +27,7 @@ Queue* Initial()
 	else return NULL;
 }
 
-Node* CreateNode(int data)
+Node* create_node(int data)
 {
 	Node* node = (Node*)malloc(sizeof(Node));
 	if (node != NULL)
@@ -40,7 +40,7 @@ Node* CreateNode(int data)
 }
 
 // Adds an node to the end of the Queue.
-void Enqueue(Queue* queue, Node* node)
+void enqueue(Queue* queue, Node* node)
 {
 	if (queue->head == NULL)
 		queue->head = queue->tail = node;
@@ -53,7 +53,7 @@ void Enqueue(Queue* queue, Node* node)
 }
 
 // Removes and returns the value of node at the beginning of the Queue.
-int Dequeue(Queue* queue)
+int dequeue(Queue* queue)
 {
 	int value = 0;
 	if (queue->head != NULL)
@@ -68,7 +68,7 @@ int Dequeue(Queue* queue)
 }
 
 // Returns the node at the beginning of the Queue without removing it.
-Node* Peek(Queue* queue)
+Node* peek(Queue* queue)
 {
 	if (queue->head != NULL)
 	{
@@ -80,39 +80,39 @@ Node* Peek(Queue* queue)
 }
 
 // Removes all node from the Queue.
-void Clear(Queue* queue)
+void clear(Queue* queue)
 {
 	while (queue->head != NULL)
-		Dequeue(queue);
+		dequeue(queue);
 }
 
-void Input(Queue* queue, int n)
+void input(Queue* queue, int n)
 {
 	for (int i = 1; i <= n; i++)
 	{
 		int data;
 		printf_s("\n Enter value for Node %d: ", i);
 		scanf_s("%d", &data);
-		Node* node = CreateNode(data);
-		Enqueue(queue, node);
+		Node* node = create_node(data);
+		enqueue(queue, node);
 	}
 }
 
-void PrintQueue(Queue* queue)
+void print_queue(Queue* queue)
 {
 	while (queue->head != NULL)
 	{
-		int value = Dequeue(queue);
+		int value = dequeue(queue);
 		printf_s(" %d ", value);
 	}
 }
 
 int main()
 {
-	Queue* queue = Initial();
-	Input(queue, 5);
-	PrintQueue(queue);
-	Clear(queue);
+	Queue* queue = initial();
+	input(queue, 5);
+	print_queue(queue);
+	clear(queue);
 
 	char getch = _getch();
 	return 0;

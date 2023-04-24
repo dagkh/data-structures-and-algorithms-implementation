@@ -1,4 +1,4 @@
 ﻿  linear_search.c
-C:\PROGRAMMING\Projects\data_structures_and_algorithms\linear_search\linear_search.c(20,33): warning C4047: 'function': 'int *' differs in levels of indirection from 'int (*)[10]'
-C:\PROGRAMMING\Projects\data_structures_and_algorithms\linear_search\linear_search.c(20,27): warning C4024: 'LinearSearch': different types for formal and actual parameter 1
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\linear_search\linear_search.c(20,34): warning C4047: 'function': 'int *' differs in levels of indirection from 'int (*)[10]'
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\linear_search\linear_search.c(20,28): warning C4024: 'linear_search': different types for formal and actual parameter 1
   linear_search.vcxproj -> C:\PROGRAMMING\Projects\data_structures_and_algorithms\x64\Debug\linear_search.exe

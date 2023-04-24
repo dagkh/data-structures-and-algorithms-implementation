@@ -2,14 +2,14 @@
 #include <conio.h>
 #include <stdlib.h>
 
-void PrintArray(int* array, int length)
+void print_array(int* array, int length)
 {
 	printf_s("  ==> ");
 	for (int i = 0; i < length; i++)
 		printf_s(" %d ", *(array + i));
 }
 
-void Input(int* array, int length)
+void input_array(int* array, int length)
 {
 	for (int i = 0; i < length; i++)
 	{
@@ -24,8 +24,8 @@ int main()
 	int n;
 	scanf_s("%d", &n);
 	int* array = (int*)malloc(n * sizeof(int));
-	Input(array, n);
-	PrintArray(array, n);
+	input_array(array, n);
+	print_array(array, n);
 
 	free(array);
 

@@ -1,3 +1,3 @@
 ﻿  binary_tree_using_queue.c
-C:\PROGRAMMING\Projects\data_structures_and_algorithms\binary_tree\binary_tree_using_queue.c(60): warning C4715: 'Initial_Queue': not all control paths return a value
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\binary_tree\binary_tree_using_queue.c(60): warning C4715: 'initial_queue': not all control paths return a value
   binary_tree.vcxproj -> C:\PROGRAMMING\Projects\data_structures_and_algorithms\x64\Debug\binary_tree.exe

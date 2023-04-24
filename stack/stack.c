@@ -14,7 +14,7 @@ typedef struct stack
 	int count;
 } Stack;
 
-Stack* Initial()
+Stack* initial()
 {
 	Stack* stack = (Stack*)malloc(sizeof(Stack));
 	if (stack != NULL)
@@ -27,7 +27,7 @@ Stack* Initial()
 }
 
 
-Node* CreateNode(int data)
+Node* create_node(int data)
 {
 	Node* node = (Node*)malloc(sizeof(Node));
 	if (node != NULL)
@@ -39,7 +39,7 @@ Node* CreateNode(int data)
 }
 
 // Returns the node at the top of the Stack without removing it.
-Node* Peek(Stack* stack)
+Node* peek(Stack* stack)
 {
 	Node* node = NULL;
 	if (stack->top != NULL)
@@ -49,7 +49,7 @@ Node* Peek(Stack* stack)
 }
 
 // Removes and returns the value of node at the top of the Stack.
-int Pop(Stack* stack)
+int pop(Stack* stack)
 {
 	int value = 0;
 	if (stack->top != NULL)
@@ -63,8 +63,8 @@ int Pop(Stack* stack)
 	return value;
 }
 
-// Push the node to the Stack.
-void Push(Stack* stack, Node* node)
+// push the node to the Stack.
+void push(Stack* stack, Node* node)
 {
 	if (stack->top == NULL)
 		stack->top = node;
@@ -77,39 +77,39 @@ void Push(Stack* stack, Node* node)
 }
 
 // Removes all node from the Stack.
-void Clear(Stack* stack)
+void clear(Stack* stack)
 {
 	while (stack->top != NULL)
-		Pop(stack);
+		pop(stack);
 }
 
-void Input(Stack* stack, int n)
+void input(Stack* stack, int n)
 {
 	for (int i = 1; i <= n; i++)
 	{
 		int data;
 		printf_s("\n Enter value for Node %d: ", i);
 		scanf_s("%d", &data);
-		Node* node = CreateNode(data);
-		Push(stack, node);
+		Node* node = create_node(data);
+		push(stack, node);
 	}
 }
 
-void PrintStack(Stack* stack)
+void	print_stack(Stack* stack)
 {
 	while (stack->top != NULL)
 	{
-		printf_s(" %d ", Peek(stack)->value);
-		Pop(stack);
+		printf_s(" %d ", peek(stack)->value);
+		pop(stack);
 	}
 	printf_s("\n");
 }
 
 int main()
 {
-	Stack* stack = Initial();
-	Input(stack, 5);
-	PrintStack(stack);
+	Stack* stack = initial();
+	input(stack, 5);
+	print_stack(stack);
 
 	char getch = _getch();
 	return 0;

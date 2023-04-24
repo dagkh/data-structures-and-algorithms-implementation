@@ -15,7 +15,7 @@ typedef struct linkedList
 	int count;
 } LinkedList;
 
-LinkedList* Initial()
+LinkedList* initial()
 {
 	LinkedList* linkedList = (LinkedList*)malloc(sizeof(LinkedList));
 	if (linkedList != NULL)
@@ -27,7 +27,7 @@ LinkedList* Initial()
 	else return NULL;
 }
 
-Node* CreateNode(int data)
+Node* create_node(int data)
 {
 	Node* node = (Node*)malloc(sizeof(Node));
 	if (node != NULL)
@@ -39,7 +39,7 @@ Node* CreateNode(int data)
 }
 
 // Adds a new node containing the specified value at the start of the LinkedList.
-void AddFirst(LinkedList* linkedList, Node* node)
+void add_first(LinkedList* linkedList, Node* node)
 {
 	if (linkedList->head == NULL)
 		linkedList->head = linkedList->tail = node;
@@ -52,7 +52,7 @@ void AddFirst(LinkedList* linkedList, Node* node)
 }
 
 // Adds a new node containing the specified value at the end of the LinkedList.
-void AddLast(LinkedList* linkedList, Node* node)
+void add_last(LinkedList* linkedList, Node* node)
 {
 	if (linkedList->head == NULL)
 		linkedList->head = linkedList->tail = node;
@@ -64,20 +64,20 @@ void AddLast(LinkedList* linkedList, Node* node)
 	linkedList->count++;
 }
 
-void Input(LinkedList* linkedList, int n)
+void input(LinkedList* linkedList, int n)
 {
 	for (int i = 1; i <= n; i++)
 	{
 		int data;
 		printf_s("\n Enter value for Node %d: ", i);
 		scanf_s("%d", &data);
-		Node* node = CreateNode(data);
-		AddLast(linkedList, node);
+		Node* node = create_node(data);
+		add_last(linkedList, node);
 	}
 }
 
 // Removes the node at the start of the LinkedList.
-void RemoveFirst(LinkedList* linkedList)
+void remove_first(LinkedList* linkedList)
 {
 	if (linkedList->head != NULL)
 	{
@@ -89,7 +89,7 @@ void RemoveFirst(LinkedList* linkedList)
 }
 
 // Removes the node at the end of the LinkedList.
-void RemoveLast(LinkedList* linkedList)
+void remove_last(LinkedList* linkedList)
 {
 	if (linkedList->head != NULL)
 	{
@@ -107,7 +107,7 @@ void RemoveLast(LinkedList* linkedList)
 }
 
 // Removes all nodes from the LinkedList.
-void Clear(LinkedList* linkedList)
+void clear(LinkedList* linkedList)
 {
 	Node* access_to_delete = NULL;
 	while (linkedList->head != NULL)
@@ -118,7 +118,7 @@ void Clear(LinkedList* linkedList)
 	}
 }
 
-void PrintLinkedList(LinkedList* linkedList)
+void print_Linkedlist(LinkedList* linkedList)
 {
 	for (Node* i = linkedList->head; i != NULL; i = i->ptr_next)
 	{
@@ -129,14 +129,14 @@ void PrintLinkedList(LinkedList* linkedList)
 
 int main()
 {
-	LinkedList* linkedList = Initial();
+	LinkedList* linkedList = initial();
 
 	int n;
 	printf_s("\n Enter number of elements: ");
 	scanf_s("%d", &n);
-	Input(linkedList, n);
-	PrintLinkedList(linkedList);
-	Clear(linkedList);
+	input(linkedList, n);
+	print_Linkedlist(linkedList);
+	clear(linkedList);
 
 	char getch = _getch();
 	return 0;

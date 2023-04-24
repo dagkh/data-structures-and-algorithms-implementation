@@ -15,7 +15,7 @@ typedef struct tree_node
 	struct tree_node* ptr_right;
 } TNode;
 
-TNode* Create_TNode(int data)
+TNode* create_tnode(int data)
 {
 	TNode* tree_node = (TNode*)malloc(sizeof(TNode));
 	if (tree_node == NULL) return NULL;
@@ -24,12 +24,12 @@ TNode* Create_TNode(int data)
 	return tree_node;
 }
 
-void InsertLeft(TNode* root, TNode* node_left)
+void insert_left(TNode* root, TNode* node_left)
 {
 	root->ptr_left = node_left;
 }
 
-void InsertRight(TNode* root, TNode* node_right)
+void insert_right(TNode* root, TNode* node_right)
 {
 	root->ptr_left = node_right;
 }
@@ -51,7 +51,7 @@ typedef struct queue
 	QNode* tail;
 } Queue;
 
-Queue* Initial_Queue()
+Queue* initial_queue()
 {
 	Queue* queue = (Queue*)malloc(sizeof(Queue));
 	if (queue != NULL)
@@ -59,7 +59,7 @@ Queue* Initial_Queue()
 	else return NULL;
 }
 
-QNode* Create_QNode(TNode* tree_node)
+QNode* create_qnode(TNode* tree_node)
 {
 	QNode* queue_node = (QNode*)malloc(sizeof(QNode));
 	if (queue_node != NULL)
@@ -72,9 +72,9 @@ QNode* Create_QNode(TNode* tree_node)
 }
 
 // Adds an node to the end of the Queue.
-void Enqueue(Queue* queue, TNode* tree_node)
+void enqueue(Queue* queue, TNode* tree_node)
 {
-	QNode* queue_node = Create_QNode(tree_node);
+	QNode* queue_node = create_qnode(tree_node);
 	if (queue->head == NULL)
 		queue->head = queue->tail = queue_node;
 	else
@@ -85,7 +85,7 @@ void Enqueue(Queue* queue, TNode* tree_node)
 }
 
 // Removes node at the beginning of the Queue.
-void Dequeue(Queue* queue)
+void dequeue(Queue* queue)
 {
 	if (queue->head != NULL)
 	{
@@ -98,7 +98,7 @@ void Dequeue(Queue* queue)
 }
 
 // Returns the node at the beginning of the Queue without removing it.
-TNode* Peek(Queue* queue)
+TNode* peek(Queue* queue)
 {
 	if (queue->head != NULL)
 	{
@@ -110,13 +110,13 @@ TNode* Peek(Queue* queue)
 }
 
 // Removes all node from the Queue.
-void Clear(Queue* queue)
+void clear(Queue* queue)
 {
 	while (queue->head != NULL)
-		Dequeue(queue);
+		dequeue(queue);
 }
 
-int Is_Queue_Empty(Queue* queue)
+int is_queue_empty(Queue* queue)
 {
 	if (queue->head == NULL) return 1;
 	return 0;
@@ -128,27 +128,27 @@ int Is_Queue_Empty(Queue* queue)
 ************************************************************
 */
 
-TNode* Enter_Data(const char* string)
+TNode* enter_data(const char* string)
 {
 	TNode* tree_node = (TNode*)malloc(sizeof(TNode));
 	printf_s("  Enter data for NODE %s: ", string);
 	int data;
 	scanf_s("%d", &data);
-	tree_node = Create_TNode(data);
+	tree_node = create_tnode(data);
 	return tree_node;
 }
 
-TNode* Initial_Tree()
+TNode* initial_tree()
 {
-	TNode* root = Enter_Data("root");
+	TNode* root = enter_data("root");
 
-	Queue* queue = Initial_Queue();
-	Enqueue(queue, root);
+	Queue* queue = initial_queue();
+	enqueue(queue, root);
 
-	while (!Is_Queue_Empty(queue))
+	while (!is_queue_empty(queue))
 	{
-		TNode* node_head = Peek(queue);
-		Dequeue(queue);
+		TNode* node_head = peek(queue);
+		dequeue(queue);
 
 		printf_s("\n Pop node %d success !", node_head->data);
 		printf_s("\n How many node-childs do you want to add for NODE %d - (0 or 1 or 2): ", node_head->data);
@@ -168,89 +168,89 @@ TNode* Initial_Tree()
 			TNode* node_want_to_add = NULL;
 			if (left_of_right == 'L' || left_of_right == 'l')
 			{
-				node_want_to_add = Enter_Data("left child");
+				node_want_to_add = enter_data("left child");
 				node_head->ptr_left = node_want_to_add;
 			}
 			else
 			{
-				node_want_to_add = Enter_Data("right child");
+				node_want_to_add = enter_data("right child");
 				node_head->ptr_right = node_want_to_add;
 			}
-			Enqueue(queue, node_want_to_add);
+			enqueue(queue, node_want_to_add);
 		}
 		else if (number_of_childs == 2)
 		{
 			TNode* node_want_to_add;
 
-			node_want_to_add = Enter_Data("left child");
+			node_want_to_add = enter_data("left child");
 			node_head->ptr_left = node_want_to_add;
-			Enqueue(queue, node_want_to_add);
+			enqueue(queue, node_want_to_add);
 
-			node_want_to_add = Enter_Data("right child");
+			node_want_to_add = enter_data("right child");
 			node_head->ptr_right = node_want_to_add;
-			Enqueue(queue, node_want_to_add);
+			enqueue(queue, node_want_to_add);
 		}
 	}
 	return root;
 }
 
 // BFS using Queue
-void Breadth_First_Traversal(TNode* root)
+void breadth_first_traversal(TNode* root)
 {
-	Queue* queue = Initial_Queue();
+	Queue* queue = initial_queue();
 	if (root != NULL)
-		Enqueue(queue, root);
+		enqueue(queue, root);
 
-	while (!Is_Queue_Empty(queue))
+	while (!is_queue_empty(queue))
 	{
-		TNode* node_first_of_queue = Peek(queue);
+		TNode* node_first_of_queue = peek(queue);
 		printf_s(" %d ", node_first_of_queue->data);
-		Dequeue(queue);
+		dequeue(queue);
 
 		if (node_first_of_queue->ptr_left != NULL)
-			Enqueue(queue, node_first_of_queue->ptr_left);
+			enqueue(queue, node_first_of_queue->ptr_left);
 		if (node_first_of_queue->ptr_right != NULL)
-			Enqueue(queue, node_first_of_queue->ptr_right);
+			enqueue(queue, node_first_of_queue->ptr_right);
 	}
 }
 
 // DFS using Recursion
-void Preorder(TNode* root)
+void preorder(TNode* root)
 {
 	if (root != NULL)
 	{
 		printf_s(" %d ", root->data);
-		Preorder(root->ptr_left);
-		Preorder(root->ptr_right);
+		preorder(root->ptr_left);
+		preorder(root->ptr_right);
 	}
 }
 
-void Inorder(TNode* root)
+void inorder(TNode* root)
 {
 	if (root != NULL)
 	{
-		Inorder(root->ptr_left);
+		inorder(root->ptr_left);
 		printf_s(" %d ", root->data);
-		Inorder(root->ptr_right);
+		inorder(root->ptr_right);
 	}
 }
 
-void Postorder(TNode* root)
+void postorder(TNode* root)
 {
 	if (root != NULL)
 	{
-		Postorder(root->ptr_left);
-		Postorder(root->ptr_right);
+		postorder(root->ptr_left);
+		postorder(root->ptr_right);
 		printf_s(" %d ", root->data);
 	}
 }
 
-void Free_Tree(TNode* root)
+void free_tree(TNode* root)
 {
 	if (root != NULL)
 	{
-		Free_Tree(root->ptr_left);
-		Free_Tree(root->ptr_right);
+		free_tree(root->ptr_left);
+		free_tree(root->ptr_right);
 		free(root);
 		root = NULL;
 	}
@@ -258,21 +258,21 @@ void Free_Tree(TNode* root)
 
 int main()
 {
-	//TNode* root = Initial_Tree();
-	TNode* root = Create_TNode(1);
-	TNode* two = Create_TNode(2);
-	TNode* three = Create_TNode(3);
-	TNode* four = Create_TNode(4);
-	TNode* five = Create_TNode(5);
-	TNode* six = Create_TNode(6);
-	TNode* seven = Create_TNode(7);
-	TNode* eight = Create_TNode(8);
-	TNode* nine = Create_TNode(9);
-	TNode* ten = Create_TNode(10);
-	TNode* eleven = Create_TNode(11);
-	TNode* twelve = Create_TNode(12);
-	TNode* thirteen = Create_TNode(13);
-	TNode* fourteen = Create_TNode(14);
+	//TNode* root = initial_tree();
+	TNode* root = create_tnode(1);
+	TNode* two = create_tnode(2);
+	TNode* three = create_tnode(3);
+	TNode* four = create_tnode(4);
+	TNode* five = create_tnode(5);
+	TNode* six = create_tnode(6);
+	TNode* seven = create_tnode(7);
+	TNode* eight = create_tnode(8);
+	TNode* nine = create_tnode(9);
+	TNode* ten = create_tnode(10);
+	TNode* eleven = create_tnode(11);
+	TNode* twelve = create_tnode(12);
+	TNode* thirteen = create_tnode(13);
+	TNode* fourteen = create_tnode(14);
 
 	root->ptr_left = two;
 	root->ptr_right = three;
@@ -294,17 +294,17 @@ int main()
 	seven->ptr_left = fourteen;
 
 	printf_s("\n Breadth First Traversal: ");
-	Breadth_First_Traversal(root);
+	breadth_first_traversal(root);
 
 	printf_s("\n\n Depth First Traversals: ");
-	printf_s("\n	Preorder Traversal : ");
-	Preorder(root);
-	printf_s("\n	Inorder Traversal  : ");
-	Inorder(root);
-	printf_s("\n	Postorder Traversal: ");
-	Postorder(root);
+	printf_s("\n	preorder Traversal : ");
+	preorder(root);
+	printf_s("\n	inorder Traversal  : ");
+	inorder(root);
+	printf_s("\n	postorder Traversal: ");
+	postorder(root);
 
-	Free_Tree(root);
+	free_tree(root);
 
 	char getch = _getch();
 	return 0;

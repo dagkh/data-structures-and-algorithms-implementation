@@ -1,2 +1,4 @@
 ﻿  cocktail_sort.c
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\cocktail_sort\cocktail_sort.c(16,12): warning C4013: 'time' undefined; assuming extern returning int
+C:\PROGRAMMING\Projects\data_structures_and_algorithms\cocktail_sort\cocktail_sort.c(56,13): warning C4129: 'B': unrecognized character escape sequence
   cocktail_sort.vcxproj -> C:\PROGRAMMING\Projects\data_structures_and_algorithms\x64\Debug\cocktail_sort.exe
